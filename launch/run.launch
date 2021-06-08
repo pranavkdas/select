@@ -9,8 +9,8 @@
     <!--- select_pcd -->    
     <node pkg="select_pcd" type="pcl_publish"  name="pcl_publish"    output="screen"/>
     <node pkg="select_pcd" type="pcl_partition"  name="pcl_partition"    output="screen"/>
-    <node pkg="select_pcd" type="pcl_filter"  name="pcl_filter"    output="screen"/>
-    <node pkg="select_pcd" type="pcl_downsampling"  name="pcl_downsampling"    output="screen"/>
+<!--     <node pkg="select_pcd" type="pcl_filter"  name="pcl_filter"    output="screen"/>
+    <node pkg="select_pcd" type="pcl_downsampling"  name="pcl_downsampling"    output="screen"/> -->
     <node pkg="select_pcd" type="pcl_matching"  name="pcl_matching"    output="screen"/>
     <!--- <node pkg="select_pcd" type="write"  name="write"    output="screen"/>  -->  
 

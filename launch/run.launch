@@ -1,0 +1,17 @@
+<launch>
+ 
+    <!--- Run Rviz-->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find select_pcd)/launch/test.rviz" />
+
+    <!--- TF -->
+    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map"  args="0 0 0 1.570795   0        1.570795 /map /camera_init 10" />
+
+    <!--- select_pcd -->    
+    <node pkg="select_pcd" type="pcl_publish"  name="pcl_publish"    output="screen"/>
+    <node pkg="select_pcd" type="pcl_partition"  name="pcl_partition"    output="screen"/>
+    <node pkg="select_pcd" type="pcl_filter"  name="pcl_filter"    output="screen"/>
+    <node pkg="select_pcd" type="pcl_downsampling"  name="pcl_downsampling"    output="screen"/>
+    <node pkg="select_pcd" type="pcl_matching"  name="pcl_matching"    output="screen"/>
+    <!--- <node pkg="select_pcd" type="write"  name="write"    output="screen"/>  -->  
+
+</launch>

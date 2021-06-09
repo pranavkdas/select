@@ -19,6 +19,7 @@ typedef PointMatcher<float> PM;
 
 PM::DataPoints scene;
 PM::DataPoints object;
+pcl::PointCloud<pcl::PointXYZ> cloud_targ;
 
 class cloudHandler
 {
@@ -34,8 +35,9 @@ public:
     void cloudCB_targ(const sensor_msgs::PointCloud2 &input)
     {
 
-        // pcl::fromROSMsg(input, cloud_targ);
+        pcl::fromROSMsg(input, cloud_targ);
         scene= PointMatcher_ros::rosMsgToPointMatcherCloud<float>(input, false);
+
 
     }
 
@@ -72,7 +74,8 @@ public:
     // {   
         // sensor_msgs::PointCloud2 transformed_pcd = PointMatcher_ros::pointMatcherCloudToRosMsg<float>(::object, "/camera_init", ros::Time::now());
         // pcl_pub_aligned.publish(transformed_pcd);
-
+    if(cloud_scan.points.size() > 0 && cloud_targ.points.size()>0)
+    {
         PM::ICP icp;
         
 
@@ -190,6 +193,7 @@ public:
 
         sensor_msgs::PointCloud2 transformed_pcd = PointMatcher_ros::pointMatcherCloudToRosMsg<float>(transformed_object, "/camera_init", ros::Time::now());
         pcl_pub_aligned.publish(transformed_pcd);
+    }
 
         ///////////////////////////////////////////
         // sensor_msgs::PointCloud2 output;

@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Current Position1
         - /Axes1
       Splitter Ratio: 0.5
     Tree Height: 709
@@ -203,6 +204,14 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /visualization_marker
+      Name: Current Position
+      Namespaces:
+        basic_shapes: true
+      Queue Size: 100
+      Value: true
     - Class: rviz/Axes
       Enabled: true
       Length: 5
@@ -238,25 +247,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 28.2451114654541
+      Distance: 103.55855560302734
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 5.1442036628723145
-        Y: -5.245697498321533
-        Z: 13.211051940917969
+        X: 43.70659255981445
+        Y: -38.6447868347168
+        Z: 19.814666748046875
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5953978896141052
+      Pitch: 0.6753977537155151
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.465392827987671
+      Yaw: 3.9953885078430176
     Saved: ~
 Window Geometry:
   Displays:

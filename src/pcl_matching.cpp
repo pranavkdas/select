@@ -15,6 +15,7 @@
 // pcl::PointCloud<pcl::PointXYZ> cloud_scan;
 // pcl::PointCloud<pcl::PointXYZ> cloud_aligned;
 #include <visualization_msgs/Marker.h>
+#include <select_pcd/updated_coord.h>
 
 typedef PointMatcher<float> PM;
 
@@ -32,6 +33,7 @@ public:
         pcl_pub_scan = nh.advertise<sensor_msgs::PointCloud2>("pcl_scan_altered", 1);
         pcl_pub_aligned = nh.advertise<sensor_msgs::PointCloud2>("pcl_aligned", 1);
         marker_pub = nh.advertise<visualization_msgs::Marker>("visualization_marker", 1);
+        coords_pub = nh.advertise<select_pcd::updated_coord>("updated_coord",1);
     }
 
     void cloudCB_targ(const sensor_msgs::PointCloud2 &input)
@@ -214,6 +216,12 @@ public:
         << centroid[1] << ", "
         << centroid[2] << ")." << std::endl;
 
+        select_pcd::updated_coord new_msg;
+        new_msg.x = centroid[0];
+        new_msg.y = centroid[1];
+        new_msg.z = centroid[2];
+
+        coords_pub.publish(new_msg);
           
 
         // Set our initial shape type to be a cube
@@ -299,6 +307,7 @@ protected:
     ros::Publisher pcl_pub_scan;
     ros::Publisher pcl_pub_aligned;
     ros::Publisher marker_pub;
+    ros::Publisher coords_pub;
 };
 
 main(int argc, char **argv)
